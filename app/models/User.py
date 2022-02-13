@@ -1,6 +1,7 @@
 from app.db import Base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import validates
+
 import bcrypt
 salt = bcrypt.gensalt()
 
@@ -17,6 +18,7 @@ class User(Base):
     assert '@' in email
 
     return email
+    
   @validates('password')
   def validate_password(self, key, password):
     assert len(password) > 4
